@@ -1,0 +1,12 @@
+[info] Loading project definition from /Users/ay0716/git/scratch/scala-projects/KafkaWordCount/project
+[info] Set current project to SparkLogging (in build file:/Users/ay0716/git/scratch/scala-projects/KafkaWordCount/)
+[info] Compiling 2 Scala sources to /Users/ay0716/git/scratch/scala-projects/KafkaWordCount/target/scala-2.11/classes...
+[error] /Users/ay0716/git/scratch/scala-projects/KafkaWordCount/src/main/scala/org/apache/spark/examples/streaming/DirectKafkaWordCount.scala:72: overloaded method value createDirectStream with alternatives:
+[error]   (jssc: org.apache.spark.streaming.api.java.JavaStreamingContext,locationStrategy: org.apache.spark.streaming.kafka010.LocationStrategy,consumerStrategy: org.apache.spark.streaming.kafka010.ConsumerStrategy[String,String])org.apache.spark.streaming.api.java.JavaInputDStream[org.apache.kafka.clients.consumer.ConsumerRecord[String,String]] <and>
+[error]   (ssc: org.apache.spark.streaming.StreamingContext,locationStrategy: org.apache.spark.streaming.kafka010.LocationStrategy,consumerStrategy: org.apache.spark.streaming.kafka010.ConsumerStrategy[String,String])org.apache.spark.streaming.dstream.InputDStream[org.apache.kafka.clients.consumer.ConsumerRecord[String,String]]
+[error]  cannot be applied to (org.apache.spark.streaming.StreamingContext, scala.collection.immutable.Map[String,String], org.apache.spark.streaming.kafka010.LocationStrategy, org.apache.spark.streaming.kafka010.ConsumerStrategy[String,String])
+[error]     val messages = KafkaUtils.createDirectStream[String, String](
+[error]                                                 ^
+[error] one error found
+[error] (compile:compileIncremental) Compilation failed
+[error] Total time: 2 s, completed Nov 10, 2016 6:11:41 AM
