@@ -5,7 +5,12 @@ case class TestConnector(id: String, sequence: Integer, value: Integer)
 
 object TestCassandraConnector {
   def main(args: Array[String]): Unit = {
+
     import com.datastax.spark.connector._
+
+    val TestKeyspace = "dev_data_lake"
+    val TestTable = "test_connector"
+
     val spark = SparkSession
       .builder()
       .master("local[*]")
@@ -15,8 +20,9 @@ object TestCassandraConnector {
       .getOrCreate()
 
     val rdd1 = spark.sparkContext.parallelize(for (sequence <- 1 to 100) yield TestConnector("key1", sequence, sequence))
-    rdd1.saveToCassandra("dev_data_lake", "test_connector", writeConf = WriteConf(ifNotExists = true))
+
+    rdd1.saveToCassandra(TestKeyspace, TestTable, writeConf = WriteConf(ifNotExists = true))
     val rdd2 = spark.sparkContext.parallelize(for (sequence <- 1 to 1000) yield TestConnector("key1", sequence, sequence))
-    rdd2.saveToCassandra("dev_data_lake", "test_connector", writeConf = WriteConf(ifNotExists = true))
+    rdd2.saveToCassandra(TestKeyspace, TestTable, writeConf = WriteConf(ifNotExists = true))
   }
 }
